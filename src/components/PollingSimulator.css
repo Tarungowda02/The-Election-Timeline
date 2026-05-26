@@ -1,0 +1,171 @@
+/* PollingSimulator.css */
+
+.fingerprint-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.fingerprint-btn:active {
+  transform: scale(0.95);
+}
+
+.fingerprint-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(16, 185, 129, 0.5); /* Secondary color */
+  transition: height 0.1s linear;
+  z-index: 0;
+}
+
+.fingerprint-icon {
+  position: relative;
+  z-index: 1;
+}
+
+/* Trading Cards */
+.candidate-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.trading-card {
+  width: 200px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.trading-card:hover {
+  transform: translateY(-10px) rotateX(10deg) rotateY(5deg);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(79, 70, 229, 0.5);
+  border-color: rgba(79, 70, 229, 0.5);
+}
+
+.trading-card.selected {
+  border-color: var(--secondary);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.5);
+  transform: scale(1.05);
+}
+
+.stamp-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg) scale(2);
+  color: var(--secondary);
+  font-weight: 800;
+  font-size: 2.5rem;
+  border: 4px solid var(--secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+}
+
+.trading-card.selected .stamp-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+}
+
+/* Drag and Drop Box */
+.drag-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.draggable-ballot {
+  width: 150px;
+  height: 200px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  cursor: grab;
+  color: black;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
+  z-index: 10;
+}
+
+.draggable-ballot:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+.ballot-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ballot-line {
+  height: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.ballot-line.check {
+  background: var(--primary);
+  width: 60%;
+}
+
+.scanner-box {
+  width: 250px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px dashed rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.scanner-box.drag-over {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--secondary);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+.scanner-slot {
+  width: 80%;
+  height: 10px;
+  background: #000;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+}
